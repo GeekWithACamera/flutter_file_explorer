@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:file_explorer_app/file_explorer_page.dart'; // Assuming your app name is file_explorer_app
+import 'package:flutter_file_explorer/file_explorer_page.dart'; // Assuming your app name is file_explorer_app
 
 // Helper function to pump the FileExplorerPage widget
 Future<void> pumpFileExplorerPage(WidgetTester tester) async {
@@ -200,7 +200,7 @@ void main() {
 
       // Initial state: preview pane is hidden, button shows "show preview" icon (preview_rounded)
       final showPreviewIcon = find.byIcon(Icons.preview_rounded);
-      final hidePreviewIcon = find.byIcon(Icons.preview_off_rounded);
+      final hidePreviewIcon = find.byIcon(Icons.preview_rounded);
       final previewPaneContent = find.text('Select an item to see details');
 
       expect(showPreviewIcon, findsOneWidget);

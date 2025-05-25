@@ -470,7 +470,7 @@ class _FileExplorerPageState extends State<FileExplorerPage> {
                           ),
                           // const Spacer(), // Removed to allow search bar to expand more
                           _buildCommandBarButton(
-                            _showPreviewPane ? Icons.preview_off_rounded : Icons.preview_rounded,
+                            _showPreviewPane ? Icons.preview_rounded : Icons.preview_rounded,
                             _showPreviewPane ? 'Hide preview' : 'Show preview',
                             () => setState(() => _showPreviewPane = !_showPreviewPane),
                           ),
@@ -760,7 +760,7 @@ class _FileExplorerPageState extends State<FileExplorerPage> {
                       behavior: SnackBarBehavior.floating,
                       shape: RoundedRectangleBorder(borderRadius: AppTheme._borderRadius),
                       backgroundColor: Theme.of(context).colorScheme.inverseSurface,
-                      contentTextStyle: TextStyle(color: Theme.of(context).colorScheme.onInverseSurface),
+                      //contentTextStyle: TextStyle(color: Theme.of(context).colorScheme.onInverseSurface),
                     ),
                   );
                 },
@@ -840,29 +840,3 @@ class _FileExplorerPageState extends State<FileExplorerPage> {
     }
   }
 }
-                            );
-                          },
-                        ),
-                ),
-              ),
-            ),
-            // Preview/Details Pane
-            if (_showPreviewPane)
-              Container(
-                width: 300,
-                decoration: BoxDecoration(
-                  border: Border(left: BorderSide(color: Colors.grey[300]!)),
-                ),
-                child: _selectedFile == null
-                    ? const Center(child: Text('No file selected'))
-                    : FutureBuilder<Map<String, dynamic>>(
-                        future: _getFileDetails(_selectedFile!),
-                        builder: (context, snapshot) {
-                          if (snapshot.connectionState == ConnectionState.waiting) {
-                            return const Center(child: CircularProgressIndicator());
-                          }
-                          if (!snapshot.hasData) {
-                            return const Center(child: Text('Error loading file details'));
-                          }
-                          final details = snapshot.data!;
-                          return Column(
