@@ -1,0 +1,6 @@
+documentation:
+  - '**/*.md'
+bug:
+  - 'bug/**'
+enhancement:
+  - 'feature/**'
